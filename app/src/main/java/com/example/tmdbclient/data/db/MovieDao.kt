@@ -1,6 +1,5 @@
 package com.example.tmdbclient.data.db
 
-import androidx.core.provider.FontsContractCompat.FontRequestCallback.FontRequestFailReason
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -10,7 +9,7 @@ import com.example.tmdbclient.data.model.movie.Movie
 @Dao
 interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovies(movies:List<Movie>)
+    suspend fun saveMovies(tvShows: List<Movie>)
 
     @Query("DELETE FROM popular_movies")
     suspend fun deleteAllMovies()

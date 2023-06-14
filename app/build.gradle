@@ -15,8 +15,10 @@ android {
         versionCode 1
         versionName "1.0"
 
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String","API_KEY", "\"ec8394f8af9fce4604d5da48e0b3d405\""
+        buildConfigField "String", "API_KEY", "\"ec8394f8af9fce4604d5da48e0b3d405\""
+        buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
     }
 
 
@@ -26,8 +28,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled= true
+    dataBinding {
+        enabled = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,12 +38,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 
 }
 
 dependencies {
     def lifecycle_version = "2.6.1"
-    def arch_version = "2.2.0"
     def room_version = "2.5.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -64,8 +68,14 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-    implementation 'com.google.dagger:dagger:2.44'
-    kapt "com.google.dagger:dagger-compiler:2.44"
+
+//    Dagger
+    implementation 'com.google.dagger:dagger:2.46.1'
+    implementation "com.google.dagger:dagger-android:2.46.1"
+    implementation "com.google.dagger:dagger-android-support:2.46.1"
+    kapt "com.google.dagger:dagger-compiler:2.46.1"
+    kapt "com.google.dagger:dagger-android-processor:2.46.1"
+
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 

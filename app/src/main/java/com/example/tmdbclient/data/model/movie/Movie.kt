@@ -19,4 +19,4 @@ data class Movie(
     @SerializedName("title")
     val title: String?,
 
-)
+    )
